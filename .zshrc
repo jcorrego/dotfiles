@@ -3,13 +3,16 @@ autoload -U +X compinit && compinit
 export PATH=/usr/local/opt/mysql-client/bin:$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/juancarlosorrego/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+export EDITOR='pstorm'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+bindkey "[C" forward-word
+bindkey "[D" backward-word
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,3 +108,25 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vapor="php vendor/bin/vapor"
+alias p='nocorrect pstorm'
+alias lah='ls -lah'
+alias zshrc="$EDITOR ~/.zshrc"
+# PHP
+alias iphp='psysh'
+alias art='php artisan'
+alias tinker='php artisan tinker'
+alias mfs='php artisan migrate:fresh --seed'
+alias t='phpunit'
+# Git aliases
+alias g='git'
+alias gs='git status'
+alias wip='git commit -am "WIP"'
+
+# Local config
+if [[ -e $HOME/.zshrc.local ]]
+then
+    source $HOME/.zshrc.local
+fi
+#https://laravel-news.com/maximize-terminal-productivity
+cdpath=(~/Proyectos)
+
