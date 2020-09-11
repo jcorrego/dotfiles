@@ -122,6 +122,8 @@ alias g='git'
 alias gs='git status'
 alias wip='git commit -am "WIP"'
 alias nah='git reset --hard;git clean -df'
+# Composer
+alias cda="composer dump-autoload -o"
 # Local config
 if [[ -e $HOME/.zshrc.local ]]
 then
