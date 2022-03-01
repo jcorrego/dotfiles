@@ -1,10 +1,10 @@
 autoload -U +X compinit && compinit
 # If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/opt/mysql-client/bin:$HOME/bin:/usr/local/bin:$HOME/.composer/vendor/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export EDITOR='pstorm'
+export EDITOR='code'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -27,14 +27,13 @@ bindkey "[D" backward-word
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -49,6 +48,9 @@ bindkey "[D" backward-word
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -73,11 +75,11 @@ bindkey "[D" backward-word
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-git 
+git
 zsh-autosuggestions
 laravel
 composer
-osx
+macos
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,28 +109,46 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vapor="php vendor/bin/vapor"
+
 alias p='nocorrect pstorm'
 alias lah='ls -lah'
 alias zshrc="$EDITOR ~/.zshrc"
-# PHP
-alias iphp='psysh'
-alias art='php artisan'
-alias tinker='php artisan tinker'
-alias mfs='php artisan migrate:fresh --seed'
-alias t='phpunit'
-# Git aliases
+
+# Git
 alias g='git'
 alias gs='git status'
 alias wip='git commit -am "WIP"'
 alias nah='git reset --hard;git clean -df'
+
+# Laravel & PHP
+# alias art='php artisan'
+# alias tinker='php artisan tinker'
+# alias mfs='php artisan migrate:fresh --seed'
+# alias t='phpunit'
+# alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+# alias vapor='./vendor/bin/vapor'
+# alias tlint='./vendor/bin/tlint'
+
 # Composer
 alias cda="composer dump-autoload -o"
+
+# Drupal
+alias drush='./vendor/bin/drush'
+
+# Drupal docksal alias
+# alias cst='fin drush cst'
+# alias cim='fin drush cim'
+# alias cex='fin drush cex'
+
 # Local config
 if [[ -e $HOME/.zshrc.local ]]
 then
     source $HOME/.zshrc.local
 fi
-#https://laravel-news.com/maximize-terminal-productivity
+
 cdpath=(~/Proyectos)
 
+# Nvm
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
